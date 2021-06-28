@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+    
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+          #label{
+    float: right;
+}
+        </style>
+    </head>
+    <body>
+        <h1 id="heading">Online Notepad</h1>
+        <label><input onchange="foo()" type="checkbox" id="feature-flag">Save My Notes</label>
+        <textarea id="textarea" placeholder="Write your notes here" rows="10" cols="50"></textarea>
+        <!-- <button onclick="boo()">ABC</button> -->
+        
+        <script>
+          var check = document.getElementById("feature-flag");
+function foo() {
+    if(check.checked == true) {
+        setInterval(function () {
+            localStorage.setItem("autosave-data", document.getElementById("textarea").value);
+        },1000)
+    }
+}
+window.onload = function boo() {
+    document.getElementById("textarea").value = localStorage.getItem("autosave-data");
+}
+        </script>
+    </body>
+</html>
